@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $githubToken = "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"
+      $repository = "TestGitHubActionFromDevOps"
+      $branch = "master"
+      $command = "curl -X POST https://api.github.com/repos/$($repository)/actions/workflows/blank.yml -H 'Authorization: token $githubToken' -H 'Accept: application/vnd.github.v3+json' -d '{""ref"":""$($branch)""}'"
+      Invoke-Expression -Command $command
