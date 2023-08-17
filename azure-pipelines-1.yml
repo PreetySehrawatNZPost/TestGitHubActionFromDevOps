@@ -14,7 +14,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $githubToken = "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"
+      $githubToken = "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"
       $repository = "TestGitHubActionFromDevOps"
       $branch = "master"
       $command = "curl -X POST https://api.github.com/repos/$($repository)/actions/workflows/blank.yml -H 'Authorization: token $githubToken' -H 'Accept: application/vnd.github.v3+json' -d '{""ref"":""$($branch)""}'"
